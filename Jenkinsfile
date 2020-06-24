@@ -32,7 +32,7 @@ pipeline {
         dotnet restore
         dotnet clean
         dotnet build --configuration Debug
-        dotnet pack --no-build --output nupkgs
+        dotnet pack --no-build --output nupkgs --version-suffix=${BUILD_ID}
 	dir nupkgs
     """
    }
