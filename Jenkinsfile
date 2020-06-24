@@ -4,11 +4,6 @@ pipeline {
   dotnet = 'dotnet.exe'
  }
  stages {
-  stage('Checkout') {
-   steps {
-    git credentialsId: 'userId', url: 'https://github.com/NeelBhatt/SampleCliApp', branch: 'master'
-   }
-  }
   stage('System Information for Debugging') {
    steps {
     bat "where git"
