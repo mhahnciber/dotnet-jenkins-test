@@ -7,23 +7,26 @@ pipeline {
   stage('System Information for Debugging') {
    steps {
     bat "where git"
-    bat "dir"
     bat "set"
+    bat "dir"
    }
   }
 
   stage('Restore PACKAGES') {
    steps {
-    bat "dotnet restore --configfile NuGet.Config"
+    bat "cd lib-test"
+    bat "dotnet restore"
    }
   }
   stage('Clean') {
    steps {
+    bat "cd lib-test"
     bat 'dotnet clean'
    }
   }
   stage('Build') {
    steps {
+    bat "cd lib-test"
     bat 'dotnet build --configuration Release'
    }
   }
