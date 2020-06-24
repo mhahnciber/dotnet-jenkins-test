@@ -19,8 +19,8 @@ pipeline {
         dotnet restore
         dotnet clean
         dotnet build --configuration Debug
-        dotnet nuget pack --no-build --output nupkgs
-	dir 
+        dotnet pack --no-build --output nupkgs
+	dir nupkgs
     """
    }
   }
@@ -32,8 +32,8 @@ pipeline {
         dotnet restore
         dotnet clean
         dotnet build --configuration Debug
-        dotnet nuget pack --no-build --output nupkgs
-	dir 
+        dotnet pack --no-build --output nupkgs
+	dir nupkgs
     """
    }
   }
@@ -45,8 +45,8 @@ pipeline {
         dotnet restore
         dotnet clean
         dotnet build --configuration Debug
-        dotnet nuget pack --no-build --output nupkgs
-	dir 
+        dotnet pack --no-build --output nupkgs
+	dir nupkgs
     """
    }
   }
