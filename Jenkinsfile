@@ -1,7 +1,7 @@
 pipeline {
  agent any
  environment {
-  dotnet = 'path\to\dotnet.exe'
+  dotnet = 'dotnet.exe'
  }
  stages {
   stage('Checkout') {
@@ -31,7 +31,7 @@ pipeline {
   }
   stage('Publish') {
    steps {
-    bat "dotnet nuget push **\\nupkgs\\*.nupkg -k yourApiKey -s            http://myserver/artifactory/api/nuget/nuget-internal-stable/com/sample"
+    bat "dotnet nuget push **\\nupkgs\\*.nupkg -k yourApiKey -s   http://myserver/artifactory/api/nuget/nuget-internal-stable/com/sample"
    }
   }
  }
