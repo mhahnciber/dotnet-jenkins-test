@@ -12,35 +12,44 @@ pipeline {
    }
   }
 
-  stage('Restore PACKAGES') {
+  stage('build lib') {
    steps {
     bat """
         cd lib-test
         dotnet restore
+        dotnet clean
+        dotnet build --configuration Debug
+        dotnet nuget pack --no-build --output nupkgs
+	dir 
     """
    }
   }
-  stage('Clean') {
+  
+  stage('build cmd') {
    steps {
-    bat "cd lib-test"
-    bat 'dotnet clean'
+    bat """
+        cd cmd-test
+        dotnet restore
+        dotnet clean
+        dotnet build --configuration Debug
+        dotnet nuget pack --no-build --output nupkgs
+	dir 
+    """
    }
   }
-  stage('Build') {
+  
+  stage('build api') {
    steps {
-    bat "cd lib-test"
-    bat 'dotnet build --configuration Release'
+    bat """
+        cd api-test
+        dotnet restore
+        dotnet clean
+        dotnet build --configuration Debug
+        dotnet nuget pack --no-build --output nupkgs
+	dir 
+    """
    }
   }
-  stage('Pack') {
-   steps {
-    bat 'dotnet pack --no-build --output nupkgs'
-   }
-  }
-  stage('Publish') {
-   steps {
-    bat "dotnet nuget push **\\nupkgs\\*.nupkg -k yourApiKey -s   http://myserver/artifactory/api/nuget/nuget-internal-stable/com/sample"
-   }
-  }
+
  }
 }
