@@ -14,8 +14,10 @@ pipeline {
 
   stage('Restore PACKAGES') {
    steps {
-    bat "cd lib-test"
-    bat "dotnet restore"
+    bat """
+        cd lib-test
+        dotnet restore
+    """
    }
   }
   stage('Clean') {
