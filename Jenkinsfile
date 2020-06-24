@@ -45,8 +45,8 @@ pipeline {
         dotnet restore
         dotnet clean
         dotnet build --configuration Debug
-        dotnet pack --no-build --output nupkgs
-	dir nupkgs
+        echo web api projects are generally not packed with nuget
+	
     """
    }
   }
