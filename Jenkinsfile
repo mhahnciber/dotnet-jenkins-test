@@ -9,6 +9,14 @@ pipeline {
     git credentialsId: 'userId', url: 'https://github.com/NeelBhatt/SampleCliApp', branch: 'master'
    }
   }
+  stage('System Information for Debugging') {
+   steps {
+    bat "where git"
+    bat "dir"
+    bat "set"
+   }
+  }
+
   stage('Restore PACKAGES') {
    steps {
     bat "dotnet restore --configfile NuGet.Config"
