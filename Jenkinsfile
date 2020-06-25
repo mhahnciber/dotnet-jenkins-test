@@ -21,7 +21,7 @@ pipeline {
         dotnet build --configuration Debug
         dotnet pack --no-build --output nupkgs --version-suffix=${BUILD_ID}
 	dir nupkgs
-        dotnet nuget push --skip-duplicate -s http://localhost:5000/v3/index.json nupkgs\lib-test.1.0.0-${BUILD_ID}.nupkg
+        dotnet nuget push --skip-duplicate -s http://localhost:5000/v3/index.json nupkgs\\lib-test.1.0.0-${BUILD_ID}.nupkg
     """
    }
   }
