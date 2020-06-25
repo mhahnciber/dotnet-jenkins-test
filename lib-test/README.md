@@ -10,4 +10,3 @@ another project.
 ## nuget
 
 The goal is to push the the simple nuget repository.
-
